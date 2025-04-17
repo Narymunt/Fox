@@ -3,31 +3,71 @@
 <pre>
 <h1>Build Log</h1>
 <h3>
---------------------Configuration: Fox - Win32 Debug--------------------
+--------------------Configuration: Fox - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPFA.tmp" with contents
+Creating temporary file "C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC0.tmp" with contents
 [
-/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/Fox.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"C:\projects\Fox\Main.cpp"
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Release/" /Fp"Release/Fox.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\projects\Fox\SinTable.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPFA.tmp" 
-Creating temporary file "C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPFB.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC0.tmp" 
+Creating temporary file "C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC1.tmp" with contents
 [
-kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Fox.pdb" /debug /machine:I386 /out:"Debug/Fox.exe" /pdbtype:sept 
-.\Debug\Main.obj
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Fox.pdb" /machine:I386 /out:"Release/Fox.exe" 
+.\Release\Audio.obj
+.\Release\BankSFX.obj
+.\Release\Event.obj
+.\Release\EventEVT.obj
+.\Release\EventSFX.obj
+.\Release\EventZAN.obj
+.\Release\FileSystem.obj
+.\Release\Font.obj
+.\Release\Knot.obj
+.\Release\Main.obj
+.\Release\Scene.obj
+.\Release\Sound.obj
+.\Release\Sprite.obj
+.\Release\Terminal.obj
+.\Release\Tree.obj
+.\Release\YTable.obj
+.\Release\Conversions.obj
+.\Release\SinTable.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\Firefox\LOCALS~1\Temp\RSPFB.tmp"
+Creating command line "link.exe @C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC1.tmp"
 <h3>Output Window</h3>
 Compiling...
-Main.cpp
-C:\projects\Fox\Main.cpp(167) : warning C4700: local variable 'h1' used without having been initialized
+SinTable.cpp
 Linking...
+Creating temporary file "C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC3.tmp" with contents
+[
+/nologo /o"Release/Fox.bsc" 
+.\Release\Audio.sbr
+.\Release\BankSFX.sbr
+.\Release\Event.sbr
+.\Release\EventEVT.sbr
+.\Release\EventSFX.sbr
+.\Release\EventZAN.sbr
+.\Release\FileSystem.sbr
+.\Release\Font.sbr
+.\Release\Knot.sbr
+.\Release\Main.sbr
+.\Release\Scene.sbr
+.\Release\Sound.sbr
+.\Release\Sprite.sbr
+.\Release\Terminal.sbr
+.\Release\Tree.sbr
+.\Release\YTable.sbr
+.\Release\Conversions.sbr
+.\Release\SinTable.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC3.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
 
 
 
 <h3>Results</h3>
-Fox.exe - 0 error(s), 1 warning(s)
+Fox.exe - 0 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

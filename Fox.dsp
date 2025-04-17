@@ -39,11 +39,11 @@ RSC=rc.exe
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "Release"
-# PROP Intermediate_Dir "Release"
+# PROP Intermediate_Dkr "Release"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x415 /d "NDEBUG"
@@ -69,7 +69,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x415 /d "_DEBUG"
@@ -92,12 +92,144 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=.\Audio.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\BankSFX.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Conversions.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Event.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\EventEVT.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\EventSFX.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\EventZAN.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\FileSystem.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Font.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Knot.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\Main.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Scene.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\SinTable.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sound.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sprite.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Terminal.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Tree.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\YTable.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
+# Begin Source File
+
+SOURCE=.\Audio.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\BankSFX.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Event.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\EventEVT.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\EventSFX.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\EventZAN.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\FileSystem.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Font.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Knot.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Scene.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\SinTable.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sound.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Sprite.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Terminal.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Tree.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\YTable.h
+# End Source File
 # End Group
 # Begin Group "Resource Files"
 
