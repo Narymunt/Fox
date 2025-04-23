@@ -1,0 +1,293 @@
+// Fox v0.5 
+// by Jaroslaw Rozynski
+//===
+// TODO:
+
+// konwersja stanu klawiszy ze scancode na wlasne
+
+#ifndef _FOX_keysym_h
+#define _FOX_keysym_h
+ 
+typedef enum {
+	FOXK_UNKNOWN		= 0,
+	FOXK_FIRST			= 0,
+	FOXK_BACKSPACE		= 8,
+	FOXK_TAB			= 9,
+	FOXK_CLEAR			= 12,
+	FOXK_RETURN			= 13,
+	FOXK_PAUSE			= 19,
+	FOXK_ESCAPE			= 27,
+	FOXK_SPACE			= 32,
+	FOXK_EXCLAIM		= 33,
+	FOXK_QUOTEDBL		= 34,
+	FOXK_HASH			= 35,
+	FOXK_DOLLAR			= 36,
+	FOXK_AMPERSAND		= 38,
+	FOXK_QUOTE			= 39,
+	FOXK_LEFTPAREN		= 40,
+	FOXK_RIGHTPAREN		= 41,
+	FOXK_ASTERISK		= 42,
+	FOXK_PLUS			= 43,
+	FOXK_COMMA			= 44,
+	FOXK_MINUS			= 45,
+	FOXK_PERIOD			= 46,
+	FOXK_SLASH			= 47,
+	FOXK_0				= 48,
+	FOXK_1				= 49,
+	FOXK_2				= 50,
+	FOXK_3				= 51,
+	FOXK_4				= 52,
+	FOXK_5				= 53,
+	FOXK_6				= 54,
+	FOXK_7				= 55,
+	FOXK_8				= 56,
+	FOXK_9				= 57,
+	FOXK_COLON			= 58,
+	FOXK_SEMICOLON		= 59,
+	FOXK_LESS			= 60,
+	FOXK_EQUALS			= 61,
+	FOXK_GREATER		= 62,
+	FOXK_QUESTION		= 63,
+	FOXK_AT				= 64,
+	
+	FOXK_LEFTBRACKET	= 91,
+	FOXK_BACKSLASH		= 92,
+	FOXK_RIGHTBRACKET	= 93,
+	FOXK_CARET			= 94,
+	FOXK_UNDERSCORE		= 95,
+	FOXK_BACKQUOTE		= 96,
+	FOXK_a				= 97,
+	FOXK_b				= 98,
+	FOXK_c				= 99,
+	FOXK_d				= 100,
+	FOXK_e				= 101,
+	FOXK_f				= 102,
+	FOXK_g				= 103,
+	FOXK_h				= 104,
+	FOXK_i				= 105,
+	FOXK_j				= 106,
+	FOXK_k				= 107,
+	FOXK_l				= 108,
+	FOXK_m				= 109,
+	FOXK_n				= 110,
+	FOXK_o				= 111,
+	FOXK_p				= 112,
+	FOXK_q				= 113,
+	FOXK_r				= 114,
+	FOXK_s				= 115,
+	FOXK_t				= 116,
+	FOXK_u				= 117,
+	FOXK_v				= 118,
+	FOXK_w				= 119,
+	FOXK_x				= 120,
+	FOXK_y				= 121,
+	FOXK_z				= 122,
+	FOXK_DELETE			= 127,
+
+	FOXK_WORLD_0		= 160,		/* 0xA0 */
+	FOXK_WORLD_1		= 161,
+	FOXK_WORLD_2		= 162,
+	FOXK_WORLD_3		= 163,
+	FOXK_WORLD_4		= 164,
+	FOXK_WORLD_5		= 165,
+	FOXK_WORLD_6		= 166,
+	FOXK_WORLD_7		= 167,
+	FOXK_WORLD_8		= 168,
+	FOXK_WORLD_9		= 169,
+	FOXK_WORLD_10		= 170,
+	FOXK_WORLD_11		= 171,
+	FOXK_WORLD_12		= 172,
+	FOXK_WORLD_13		= 173,
+	FOXK_WORLD_14		= 174,
+	FOXK_WORLD_15		= 175,
+	FOXK_WORLD_16		= 176,
+	FOXK_WORLD_17		= 177,
+	FOXK_WORLD_18		= 178,
+	FOXK_WORLD_19		= 179,
+	FOXK_WORLD_20		= 180,
+	FOXK_WORLD_21		= 181,
+	FOXK_WORLD_22		= 182,
+	FOXK_WORLD_23		= 183,
+	FOXK_WORLD_24		= 184,
+	FOXK_WORLD_25		= 185,
+	FOXK_WORLD_26		= 186,
+	FOXK_WORLD_27		= 187,
+	FOXK_WORLD_28		= 188,
+	FOXK_WORLD_29		= 189,
+	FOXK_WORLD_30		= 190,
+	FOXK_WORLD_31		= 191,
+	FOXK_WORLD_32		= 192,
+	FOXK_WORLD_33		= 193,
+	FOXK_WORLD_34		= 194,
+	FOXK_WORLD_35		= 195,
+	FOXK_WORLD_36		= 196,
+	FOXK_WORLD_37		= 197,
+	FOXK_WORLD_38		= 198,
+	FOXK_WORLD_39		= 199,
+	FOXK_WORLD_40		= 200,
+	FOXK_WORLD_41		= 201,
+	FOXK_WORLD_42		= 202,
+	FOXK_WORLD_43		= 203,
+	FOXK_WORLD_44		= 204,
+	FOXK_WORLD_45		= 205,
+	FOXK_WORLD_46		= 206,
+	FOXK_WORLD_47		= 207,
+	FOXK_WORLD_48		= 208,
+	FOXK_WORLD_49		= 209,
+	FOXK_WORLD_50		= 210,
+	FOXK_WORLD_51		= 211,
+	FOXK_WORLD_52		= 212,
+	FOXK_WORLD_53		= 213,
+	FOXK_WORLD_54		= 214,
+	FOXK_WORLD_55		= 215,
+	FOXK_WORLD_56		= 216,
+	FOXK_WORLD_57		= 217,
+	FOXK_WORLD_58		= 218,
+	FOXK_WORLD_59		= 219,
+	FOXK_WORLD_60		= 220,
+	FOXK_WORLD_61		= 221,
+	FOXK_WORLD_62		= 222,
+	FOXK_WORLD_63		= 223,
+	FOXK_WORLD_64		= 224,
+	FOXK_WORLD_65		= 225,
+	FOXK_WORLD_66		= 226,
+	FOXK_WORLD_67		= 227,
+	FOXK_WORLD_68		= 228,
+	FOXK_WORLD_69		= 229,
+	FOXK_WORLD_70		= 230,
+	FOXK_WORLD_71		= 231,
+	FOXK_WORLD_72		= 232,
+	FOXK_WORLD_73		= 233,
+	FOXK_WORLD_74		= 234,
+	FOXK_WORLD_75		= 235,
+	FOXK_WORLD_76		= 236,
+	FOXK_WORLD_77		= 237,
+	FOXK_WORLD_78		= 238,
+	FOXK_WORLD_79		= 239,
+	FOXK_WORLD_80		= 240,
+	FOXK_WORLD_81		= 241,
+	FOXK_WORLD_82		= 242,
+	FOXK_WORLD_83		= 243,
+	FOXK_WORLD_84		= 244,
+	FOXK_WORLD_85		= 245,
+	FOXK_WORLD_86		= 246,
+	FOXK_WORLD_87		= 247,
+	FOXK_WORLD_88		= 248,
+	FOXK_WORLD_89		= 249,
+	FOXK_WORLD_90		= 250,
+	FOXK_WORLD_91		= 251,
+	FOXK_WORLD_92		= 252,
+	FOXK_WORLD_93		= 253,
+	FOXK_WORLD_94		= 254,
+	FOXK_WORLD_95		= 255,		/* 0xFF */
+
+	// klawiatura alfanumeryczna
+
+	FOXK_KP0			= 256,
+	FOXK_KP1			= 257,
+	FOXK_KP2			= 258,
+	FOXK_KP3			= 259,
+	FOXK_KP4			= 260,
+	FOXK_KP5			= 261,
+	FOXK_KP6			= 262,
+	FOXK_KP7			= 263,
+	FOXK_KP8			= 264,
+	FOXK_KP9			= 265,
+	FOXK_KP_PERIOD		= 266,
+	FOXK_KP_DIVIDE		= 267,
+	FOXK_KP_MULTIPLY	= 268,
+	FOXK_KP_MINUS		= 269,
+	FOXK_KP_PLUS		= 270,
+	FOXK_KP_ENTER		= 271,
+	FOXK_KP_EQUALS		= 272,
+
+	// strzalki + home itd
+	
+	FOXK_UP				= 273,
+	FOXK_DOWN			= 274,
+	FOXK_RIGHT			= 275,
+	FOXK_LEFT			= 276,
+	FOXK_INSERT			= 277,
+	FOXK_HOME			= 278,
+	FOXK_END			= 279,
+	FOXK_PAGEUP			= 280,
+	FOXK_PAGEDOWN		= 281,
+
+	// klawisze funkcyjne
+	
+	FOXK_F1				= 282,
+	FOXK_F2				= 283,
+	FOXK_F3				= 284,
+	FOXK_F4				= 285,
+	FOXK_F5				= 286,
+	FOXK_F6				= 287,
+	FOXK_F7				= 288,
+	FOXK_F8				= 289,
+	FOXK_F9				= 290,
+	FOXK_F10			= 291,
+	FOXK_F11			= 292,
+	FOXK_F12			= 293,
+	FOXK_F13			= 294,
+	FOXK_F14			= 295,
+	FOXK_F15			= 296,
+
+	// modyfikatory stanu klawiszy
+	
+	FOXK_NUMLOCK		= 300,
+	FOXK_CAPSLOCK		= 301,
+	FOXK_SCROLLOCK		= 302,
+	FOXK_RSHIFT			= 303,
+	FOXK_LSHIFT			= 304,
+	FOXK_RCTRL			= 305,
+	FOXK_LCTRL			= 306,
+	FOXK_RALT			= 307,
+	FOXK_LALT			= 308,
+	FOXK_RMETA			= 309,
+	FOXK_LMETA			= 310,
+	FOXK_LSUPER			= 311,		// lewy klawisz Windows
+	FOXK_RSUPER			= 312,		// prawy klawisz windows
+	FOXK_MODE			= 313,		// podwojny alt
+	FOXK_COMPOSE		= 314,		// multi
+
+	// dodatkowe klawisze
+	
+	FOXK_HELP			= 315,
+	FOXK_PRINT			= 316,
+	FOXK_SYSREQ			= 317,
+	FOXK_BREAK			= 318,
+	FOXK_MENU			= 319,
+	FOXK_POWER			= 320,		// jezeli takowy wogole istnieje
+	FOXK_EURO			= 321,		// albo turbo 
+	FOXK_UNDO			= 322,		// albo macro
+
+	// tutaj dodajemy jakies swoje
+
+	FOXK_LAST
+} FOXKey;
+
+// modyfikatory przyciskane
+
+typedef enum {
+	KMOD_NONE			= 0x0000,
+	KMOD_LSHIFT			= 0x0001,
+	KMOD_RSHIFT			= 0x0002,
+	KMOD_LCTRL			= 0x0040,
+	KMOD_RCTRL			= 0x0080,
+	KMOD_LALT			= 0x0100,
+	KMOD_RALT			= 0x0200,
+	KMOD_LMETA			= 0x0400,
+	KMOD_RMETA			= 0x0800,
+	KMOD_NUM			= 0x1000,
+	KMOD_CAPS			= 0x2000,
+	KMOD_MODE			= 0x4000,
+	KMOD_RESERVED		= 0x8000
+} FOXMod;
+
+#define KMOD_CTRL	(KMOD_LCTRL|KMOD_RCTRL)
+#define KMOD_SHIFT	(KMOD_LSHIFT|KMOD_RSHIFT)
+#define KMOD_ALT	(KMOD_LALT|KMOD_RALT)
+#define KMOD_META	(KMOD_LMETA|KMOD_RMETA)
+
+#endif 
+
+// end

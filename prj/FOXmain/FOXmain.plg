@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FOXmain - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP263.tmp" with contents
+[
+/nologo /MD /W3 /GX /Z7 /Od /I "..\..\include" /I "..\..\include\FOX" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/FOXmain.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Tools\prj\Fox-0.5\src\FOX_main.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP263.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Debug\FOXmain.lib"  ".\Debug\FOX_main.obj" "
+<h3>Output Window</h3>
+Compiling...
+FOX_main.c
+Creating library...
+
+
+
+<h3>Results</h3>
+FOXmain.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
