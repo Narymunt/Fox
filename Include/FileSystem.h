@@ -2,21 +2,20 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_FILESYSTEM_H__3CE9AB5D_F52B_4407_99AA_946E0E3831F1__INCLUDED_)
-#define AFX_FILESYSTEM_H__3CE9AB5D_F52B_4407_99AA_946E0E3831F1__INCLUDED_
+// TODO:
 
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+
+#ifndef _FOXFILESYSTEM_
+#define _FOXFILESYSTEM_
 
 #include <windows.h>
 #include <stdio.h>
 
 //=== metody kompresji
 
-#define		compr_none		0
-#define		compr_lzss		1
-#define		compr_lzari		2
+#define		compression_none		0
+#define		compression_lzss		1
+#define		compression_lzari		2
 
 //=== parametry kompresji
 
@@ -72,7 +71,24 @@ public:
 	virtual void	lzari_decompress(FILE* fptr1, unsigned char* tbuffer, long comp_size);
 
 	virtual void	Select(char name[]);	// plik z plikami
-	virtual long	Search(char name[]);	// szukaj pliku, zwraca offset
+	virtual long	Search(char name[]);	// pomocnicza - zwraca dlugosc pliku
+	
+	virtual long	GetOriginalLength(char name[]);		// zwroc rozmiar rozpakowanego pliku
+	virtual	long	GetLokation(char name[]);			// podaj offset w archiwum
+	virtual long	GetLength(char name[]);				// podaj dlugosc skompresowanego
+	virtual short	GetCompressionMethod(char name[]);	// zwraca rodzaj kompresji
+
+    // funkcja zwraca wskaznik do nazwy pliku wewnatrz archiwum o podanym
+    // indeksie, np
+    // 0    myszka.tga
+    // 1    kursor.bin
+    // nie sprawdza czy podany index jest wiekszy od ilosci plikow z archiwum
+    // to nalezy sprawdzic samemu
+	// !!! nie sprawdzone pod visualem !!!
+
+    virtual char   *pGetFileName(long index);
+
+	
 	virtual void	LoadIn(unsigned char* tbuffer);	// wczytaj
 	virtual long	Load(char filename[]);	// wczytaj do bufora
 
@@ -113,6 +129,10 @@ private:
 
 	char			*pArchiveName;	// nazwa spakowanego pliku z zasobami
 
+// bez luk pamieci pomiedzy elementami w strukturze
+
+#pragma pack(push,before_structures,1)
+
 	// identyfikator
 	
 	struct filesys_header
@@ -133,8 +153,9 @@ private:
 		short compression;			// typ kompresji
 	} filesys_indexblock;		// rozmiar : 18 bajtow
 
+#pragma pack(pop,before_structures)
 	
 
 };
 
-#endif // !defined(AFX_FILESYSTEM_H__3CE9AB5D_F52B_4407_99AA_946E0E3831F1__INCLUDED_)
+#endif 

@@ -2,12 +2,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_AUDIO_H__06420044_8727_455F_ACC8_6888B4CD77D4__INCLUDED_)
-#define AFX_AUDIO_H__06420044_8727_455F_ACC8_6888B4CD77D4__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef _FOXAUDIO_
+#define _FOXAUDIO_
 
 #include <windows.h>
 #include <stdio.h>
@@ -19,8 +15,8 @@
 #include <dmusicc.h>
 #include <dmusici.h>
 
-// ta klasa sluzy tylko i wylacznie do inicjalizacji karty dzwiekowej
-// i odtwarzania muzyki. dla zwyklych sampli jest csound
+//=== ta klasa sluzy tylko i wylacznie do inicjalizacji karty dzwiekowej
+//=== i odtwarzania muzyki. dla zwyklych sampli jest csound
 
 class __declspec(dllexport) CAudio  
 {
@@ -30,18 +26,20 @@ public:
 	CAudio();
 	virtual ~CAudio();
 
-	virtual HRESULT		Init(char pCurrentDirectory[200]);			// inicjalizacja 
-	virtual HRESULT		PlayMusic(WCHAR wstrFileName[MAX_PATH]);	// odtwarzaj WAV
+	virtual HRESULT		Init(char pCurrentDirectory[200],char cAddDirectory[]);			// inicjalizacja 
+	virtual HRESULT		Init(char pCurrentDirectory[200]);	// inicjalizacja 
 
-	IDirectMusicLoader8		 *g_pMusicLoader;	
-	IDirectMusicPerformance8 *g_pPerformance_Audio;
+
+	virtual HRESULT		PlayMusic(WCHAR wstrFileName[MAX_PATH]);		// odtwarzaj WAV
+	virtual HRESULT		StopMusic(int iDelay);
+
+	IDirectMusicLoader8		 *g_pMusicLoader;			// loader dla directx 8
+	IDirectMusicPerformance8 *g_pPerformance_Audio;		// demon odtwarzaj¹cy
 
 private:
 
-	IDirectMusicSegment8     *g_pMusicSegment_Music;	
-
-
+	IDirectMusicSegment8     *g_pMusicSegment_Music;	// segment odtwarzanych danych
 
 };
 
-#endif // !defined(AFX_AUDIO_H__06420044_8727_455F_ACC8_6888B4CD77D4__INCLUDED_)
+#endif 

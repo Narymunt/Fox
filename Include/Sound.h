@@ -2,12 +2,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_SOUND_H__CAB7203C_3599_4F56_9765_98C3E864F8EC__INCLUDED_)
-#define AFX_SOUND_H__CAB7203C_3599_4F56_9765_98C3E864F8EC__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef _FOXSOUND_
+#define _FOXSOUND_
 
 #include <windows.h>
 #include <stdio.h>

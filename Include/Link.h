@@ -2,12 +2,12 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_LINK_H__08AD0103_321B_4735_8705_B430DC1F2A43__INCLUDED_)
-#define AFX_LINK_H__08AD0103_321B_4735_8705_B430DC1F2A43__INCLUDED_
+#ifndef _FOXLINK_
+#define _FOXLINK_
 
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+//=== klasa o obslugi drzewa
+//=== TODO:
+
 
 class CLink  
 {
@@ -17,4 +17,4 @@ public:
 
 };
 
-#endif // !defined(AFX_LINK_H__08AD0103_321B_4735_8705_B430DC1F2A43__INCLUDED_)
+#endif 

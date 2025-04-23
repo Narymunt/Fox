@@ -2,12 +2,8 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_SPRITE_H__3545E25B_AF0C_49E1_AA24_F9ADB694C73F__INCLUDED_)
-#define AFX_SPRITE_H__3545E25B_AF0C_49E1_AA24_F9ADB694C73F__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef _FOXSPRITE_
+#define _FOXSPRITE_
 
 #include <windows.h>
 #include <d3d8.h>
@@ -30,26 +26,59 @@ public:
 	
 	virtual HRESULT		Render();
 
+	//-=- obrót -=-
+
 	virtual void		SetRotation(float newRotation);	// ustaw rotacje
 	virtual void		SetRotationCenter(float x, float y); // ustaw punkt rotacji
 	virtual float		GetRotation(void);				// pobierz rotacje
 	virtual void		AddRotation(float addValue);	// dodaj lub odejmij 
+
+	//-=- przesuniêcie -=-
 
 	virtual void		SetTranslation(float x, float y);	// ustaw przesuniecie
 	virtual float		GetTranslationX(void);
 	virtual float		GetTranslationY(void);
 	virtual void		AddTranslation(float x, float y);
 
+	//-=- konwersje k¹tów -=-
+
 	virtual float		GetDegree(float fVector);		// podaj w katach
 	virtual float		GetRadian(float fVector);		// podaj w radianach
 
-private:
+	//-=- skalowanie -=-
 
+	virtual void		SetScale(float fValueX, float fValueY);	// ustaw skalê obiektu
+	
+	virtual void		SetScaleX(float fValueX);	// ustaw skalê
+	virtual void		SetScaleY(float fValueY);
+
+	virtual float		GetScaleX(void);	// pobierz wspó³rzêdne
+	virtual float		GetScaleY(void);		
+
+	virtual void		AddScale(float fValueX, float fValueY);	// dodaj skalê
+
+	virtual void		AddScaleX(float fValueX);
+	virtual void		AddScaleY(float fValueY);
+
+	//=== widzialnosci - czy sprite ma byc rysowany
+	//=== tylko zainicjalizowane moga byc widzialne
+
+	virtual void		SetVisible(bool bState);
+	virtual bool		GetVisible(void);
+
+	//=== stan inicjalizacji (czy byl zainicjalizowany, czy tylko klasa)
+	//=== tylko zainicjalizowane moga byc widzialne
+
+	virtual void		SetState(bool bState);
+	virtual bool		GetState(void);
+
+private:
+	
+	bool				m_bVisible;			// czy widoczny, czy ma byc renderowany
+	
 	D3DXVECTOR2			m_RotCenter;		// w pixelach
 	D3DXVECTOR2			m_Translation;		// przesuniecie we float 
 	D3DXVECTOR2			m_Scaling;			// scala we float 
-
-
 
 	float				m_Rotation;			// we float
 	
@@ -59,8 +88,9 @@ private:
 	
 	LPDIRECT3DTEXTURE8	m_pTexture;
 	
-	BOOL				m_bInitialized;
+	bool				m_bInitialized;
 
 };
 
 #endif // !defined(AFX_SPRITE_H__3545E25B_AF0C_49E1_AA24_F9ADB694C73F__INCLUDED_)
+ 

@@ -1,0 +1,27 @@
+// World.cpp: implementation of the CWorld class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "World.h"
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+//=== konstruktor inijalizuje obiekty
+
+CWorld::CWorld()
+{
+
+}
+
+//=== desktrutor zwalnia zajete obiekty
+
+CWorld::~CWorld()
+{
+	if (m_pScene!=NULL)
+	{
+		delete m_pScene;
+		m_pScene = NULL;
+	}
+}

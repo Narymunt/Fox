@@ -3,71 +3,65 @@
 <pre>
 <h1>Build Log</h1>
 <h3>
---------------------Configuration: Fox - Win32 Release--------------------
+--------------------Configuration: Fox - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC0.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP3D.tmp" with contents
 [
-/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Release/" /Fp"Release/Fox.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\projects\Fox\SinTable.cpp"
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "FOX_EXPORTS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\3d\Fox\Source\Scene.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC0.tmp" 
-Creating temporary file "C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC1.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP3D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP3E.tmp" with contents
 [
-kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Fox.pdb" /machine:I386 /out:"Release/Fox.exe" 
-.\Release\Audio.obj
-.\Release\BankSFX.obj
-.\Release\Event.obj
-.\Release\EventEVT.obj
-.\Release\EventSFX.obj
-.\Release\EventZAN.obj
-.\Release\FileSystem.obj
-.\Release\Font.obj
-.\Release\Knot.obj
-.\Release\Main.obj
-.\Release\Scene.obj
-.\Release\Sound.obj
-.\Release\Sprite.obj
-.\Release\Terminal.obj
-.\Release\Tree.obj
-.\Release\YTable.obj
-.\Release\Conversions.obj
-.\Release\SinTable.obj
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib /nologo /dll /incremental:yes /pdb:"Debug/Fox.pdb" /debug /machine:I386 /out:"Debug/Fox.dll" /implib:"Debug/Fox.lib" /pdbtype:sept 
+.\Debug\Audio.obj
+.\Debug\BankSFX.obj
+.\Debug\Button.obj
+.\Debug\Conversions.obj
+.\Debug\Episode.obj
+.\Debug\Event.obj
+.\Debug\EventEVT.obj
+.\Debug\EventSFX.obj
+.\Debug\EventZAN.obj
+.\Debug\FileSystem.obj
+.\Debug\Font.obj
+.\Debug\Fox.obj
+.\Debug\Game.obj
+.\Debug\Link.obj
+.\Debug\Mask16.obj
+.\Debug\Mask24.obj
+.\Debug\Mask32.obj
+.\Debug\Mask8.obj
+.\Debug\Mouse.obj
+.\Debug\Procedure.obj
+.\Debug\PSprite.obj
+.\Debug\Scene.obj
+.\Debug\SinTable.obj
+.\Debug\Sound.obj
+.\Debug\SoundEvent.obj
+.\Debug\Sprite.obj
+.\Debug\Terminal.obj
+.\Debug\Texture.obj
+.\Debug\Tree.obj
+.\Debug\Variable.obj
+.\Debug\Vector.obj
+.\Debug\Vertex.obj
+.\Debug\VertexBuffer.obj
+.\Debug\World.obj
+.\Debug\YTable.obj
 ]
-Creating command line "link.exe @C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC1.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\USTAWI~1\Temp\RSP3E.tmp"
 <h3>Output Window</h3>
 Compiling...
-SinTable.cpp
-Linking...
-Creating temporary file "C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC3.tmp" with contents
-[
-/nologo /o"Release/Fox.bsc" 
-.\Release\Audio.sbr
-.\Release\BankSFX.sbr
-.\Release\Event.sbr
-.\Release\EventEVT.sbr
-.\Release\EventSFX.sbr
-.\Release\EventZAN.sbr
-.\Release\FileSystem.sbr
-.\Release\Font.sbr
-.\Release\Knot.sbr
-.\Release\Main.sbr
-.\Release\Scene.sbr
-.\Release\Sound.sbr
-.\Release\Sprite.sbr
-.\Release\Terminal.sbr
-.\Release\Tree.sbr
-.\Release\YTable.sbr
-.\Release\Conversions.sbr
-.\Release\SinTable.sbr]
-Creating command line "bscmake.exe @C:\DOCUME~1\Aidem\USTAWI~1\Temp\RSPC3.tmp"
-Creating browse info file...
-<h3>Output Window</h3>
+Scene.cpp
+e:\3d\fox\source\scene.cpp(5) : fatal error C1083: Cannot open include file: 'Scene.h': No such file or directory
+Error executing cl.exe.
 
 
 
 <h3>Results</h3>
-Fox.exe - 0 error(s), 0 warning(s)
+Fox.dll - 1 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

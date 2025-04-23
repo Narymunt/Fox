@@ -2,14 +2,14 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_SINTABLE_H__DAD291DB_5C58_4697_8B7F_C7ECD79E5105__INCLUDED_)
-#define AFX_SINTABLE_H__DAD291DB_5C58_4697_8B7F_C7ECD79E5105__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef _FOXSINTABLE_
+#define _FOXSINTABLE_
 
 // tablica z przeliczeniami sinusow
+
+// TODO:
+//	- uporzadkowac metody sinusow
+
 
 class CSinTable  
 {
@@ -24,4 +24,4 @@ private:
 
 };
 
-#endif // !defined(AFX_SINTABLE_H__DAD291DB_5C58_4697_8B7F_C7ECD79E5105__INCLUDED_)
+#endif 

@@ -2,7 +2,7 @@
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
-# TARGTYPE "Win32 (x86) Application" 0x0101
+# TARGTYPE "Win32 (x86) Dynamic-Link Library" 0x0102
 
 CFG=Fox - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
@@ -17,8 +17,8 @@ CFG=Fox - Win32 Debug
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "Fox - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "Fox - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "Fox - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "Fox - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE 
 
 # Begin Project
@@ -39,11 +39,12 @@ RSC=rc.exe
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "Release"
-# PROP Intermediate_Dkr "Release"
+# PROP Intermediate_Dir "Release"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
+# ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "FOX_EXPORTS" /Yu"stdafx.h" /FD /c
+# ADD CPP /nologo /MD /W3 /GX /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "FOX_EXPORTS" /FD /c
+# SUBTRACT CPP /YX /Yc /Yu
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x415 /d "NDEBUG"
@@ -52,8 +53,12 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
-# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /machine:I386
+# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8.lib strmiids.lib dxguid.lib /nologo /dll /machine:I386
+# Begin Special Build Tool
+SOURCE="$(InputPath)"
+PostBuild_Cmds=copy       release\fox.lib       c:\winnt\      	copy       release\fox.dll       c:\winnt\ 
+# End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "Fox - Win32 Debug"
 
@@ -68,8 +73,9 @@ LINK32=link.exe
 # PROP Intermediate_Dir "Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /GZ /c
+# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "FOX_EXPORTS" /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "FOX_EXPORTS" /FD /GZ /c
+# SUBTRACT CPP /YX /Yc /Yu
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x415 /d "_DEBUG"
@@ -78,8 +84,13 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
-# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
+# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib d3d8.lib d3dx8d.lib strmiids.lib dxguid.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
+# SUBTRACT LINK32 /incremental:no
+# Begin Special Build Tool
+SOURCE="$(InputPath)"
+PostBuild_Cmds=copy        debug\fox.dll        c:\winnt\       	copy        debug\fox.lib        c:\winnt\ 
+# End Special Build Tool
 
 !ENDIF 
 
@@ -92,75 +103,143 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\Audio.cpp
+SOURCE=.\Source\Audio.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\BankSFX.cpp
+SOURCE=.\Source\BankSFX.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Conversions.cpp
+SOURCE=.\Source\Button.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Event.cpp
+SOURCE=.\Source\Conversions.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\EventEVT.cpp
+SOURCE=.\Source\Episode.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\EventSFX.cpp
+SOURCE=.\Source\Event.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\EventZAN.cpp
+SOURCE=.\Source\EventEVT.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\FileSystem.cpp
+SOURCE=.\Source\EventSFX.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Font.cpp
+SOURCE=.\Source\EventZAN.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Knot.cpp
+SOURCE=.\Source\FileSystem.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Main.cpp
+SOURCE=.\Source\Font.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Scene.cpp
+SOURCE=.\Source\Fox.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\SinTable.cpp
+SOURCE=.\Source\Game.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sound.cpp
+SOURCE=.\Source\Link.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sprite.cpp
+SOURCE=.\Source\Mask16.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Terminal.cpp
+SOURCE=.\Source\Mask24.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Tree.cpp
+SOURCE=.\Source\Mask32.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\YTable.cpp
+SOURCE=.\Source\Mask8.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Mouse.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Procedure.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\PSprite.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Scene.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SinTable.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Sound.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\SoundEvent.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Sprite.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Terminal.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Texture.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Tree.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Variable.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Vector.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\Vertex.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\VertexBuffer.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\World.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Source\YTable.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -168,72 +247,156 @@ SOURCE=.\YTable.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\Audio.h
+SOURCE=.\Include\Audio.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\BankSFX.h
+SOURCE=.\Include\BankSFX.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Event.h
+SOURCE=.\Include\Button.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\EventEVT.h
+SOURCE=.\Include\Episode.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\EventSFX.h
+SOURCE=.\Include\Event.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\EventZAN.h
+SOURCE=.\Include\EventEVT.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\FileSystem.h
+SOURCE=.\Include\EventSFX.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Font.h
+SOURCE=.\Include\EventZAN.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Knot.h
+SOURCE=.\Include\FileSystem.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Scene.h
+SOURCE=.\Include\Font.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\SinTable.h
+SOURCE=.\Include\Fox.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sound.h
+SOURCE=.\Include\Game.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Sprite.h
+SOURCE=.\Include\Link.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Terminal.h
+SOURCE=.\Include\Mask16.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Tree.h
+SOURCE=.\Include\Mask24.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\YTable.h
+SOURCE=.\Include\Mask32.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Mask8.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Mouse.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Procedure.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\PSprite.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\resource.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Scene.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Shader.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\SinTable.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Sound.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\SoundEvent.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Sprite.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Terminal.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Texture.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Tree.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Variable.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Vector.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\Vertex.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\VertexBuffer.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\World.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Include\YTable.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # End Group
+# Begin Source File
+
+SOURCE=.\ReadMe.txt
+# End Source File
 # End Target
 # End Project

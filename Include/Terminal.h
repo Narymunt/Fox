@@ -2,14 +2,11 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_TERMINAL_H__3AB994D9_4EF2_4874_B8D0_2F99DB7F16A2__INCLUDED_)
-#define AFX_TERMINAL_H__3AB994D9_4EF2_4874_B8D0_2F99DB7F16A2__INCLUDED_
-
-#if _MSC_VER > 1000
-#pragma once
-#endif // _MSC_VER > 1000
+#ifndef _FOXTERMINAL_
+#define _FOXTERMINAL_
 
 // koncowka - obiekt podlegly pod CTree
+// TODO:
 
 class CTerminal  
 {
@@ -55,4 +52,4 @@ private:
 
 };
 
-#endif // !defined(AFX_TERMINAL_H__3AB994D9_4EF2_4874_B8D0_2F99DB7F16A2__INCLUDED_)
+#endif 
