@@ -1,11 +1,7 @@
 // Fox v0.5
 // by Jaroslaw Rozynski
 //===
-// *DIRECTX VIDEO*
-//===
 // TODO:
-
-// funkcje co do ustawien okna, ikonek itd 
 
 #include <stdio.h>
 #include <malloc.h>
@@ -18,7 +14,11 @@
 #include "FOX_syswm_c.h"
 #include "FOX_pixels_c.h"
 
-#include "FOX_cursor_c.h"
+//#ifdef _WIN32_WCE
+//#define DISABLE_ICON_SUPPORT
+//#endif
+
+#include "cursor_c.h"
 
 // ikonka ekranu
 
@@ -26,6 +26,9 @@ HICON   screen_icn = NULL;
 
 void WIN_SetWMIcon(_THIS, FOX_Surface *icon, Uint8 *mask)
 {
+#ifdef DISABLE_ICON_SUPPORT
+	return;
+#else
 	FOX_Palette *pal_256;
 	FOX_Surface *icon_256;
 	Uint8 *pdata, *pwin32;
@@ -202,12 +205,20 @@ void WIN_SetWMIcon(_THIS, FOX_Surface *icon, Uint8 *mask)
 	} else {
 		SetClassLong(FOX_Window, GCL_HICON, (LONG)screen_icn);
 	}
-
+#endif /* DISABLE_ICON_SUPPORT */
 }
 
 void WIN_SetWMCaption(_THIS, const char *title, const char *icon)
 {
+#ifdef _WIN32_WCE
+	/* WinCE uses the UNICODE version */
+	int nLen = strlen(title)+1;
+	LPWSTR lpszW = alloca(nLen*2);
+	MultiByteToWideChar(CP_ACP, 0, title, -1, lpszW, nLen);
+	SetWindowText(FOX_Window, lpszW);
+#else
 	SetWindowText(FOX_Window, title);
+#endif
 }
 
 int WIN_IconifyWindow(_THIS)

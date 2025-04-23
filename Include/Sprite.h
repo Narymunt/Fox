@@ -60,14 +60,12 @@ public:
 	virtual void		AddScaleX(float fValueX);
 	virtual void		AddScaleY(float fValueY);
 
-	//=== widzialnosci - czy sprite ma byc rysowany
-	//=== tylko zainicjalizowane moga byc widzialne
+	//=== widzialnosci
 
 	virtual void		SetVisible(bool bState);
 	virtual bool		GetVisible(void);
 
 	//=== stan inicjalizacji (czy byl zainicjalizowany, czy tylko klasa)
-	//=== tylko zainicjalizowane moga byc widzialne
 
 	virtual void		SetState(bool bState);
 	virtual bool		GetState(void);

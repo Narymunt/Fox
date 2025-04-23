@@ -32,9 +32,6 @@ CSprite::CSprite(unsigned char alpha, unsigned char r, unsigned char g, unsigned
 
 	m_pSprite = NULL;	// nie aktywny
 	m_pTexture = NULL;
-
-	m_bVisible = false;
-
 }
 
 //=== usuniecie obiektu
@@ -52,9 +49,6 @@ CSprite::~CSprite()
 		m_pTexture->Release();
 		m_pTexture = NULL;
 	}
-
-	m_bInitialized = false;
-	m_bVisible = false;
 }
 
 //=== inicjalizuj obiekt - stworz ze zwyklego pliku
@@ -72,8 +66,8 @@ HRESULT CSprite::Initialize(char pCurrentDirectory[200],IDirect3DDevice8 *g_pDev
 
 	D3DXCreateSprite(g_pDevice, &m_pSprite);
 
-	m_bInitialized = TRUE;	// zainicjalizowany - dane wczytane
-	m_bVisible = true;	// tutaj jest widoczny
+	m_bInitialized = TRUE;
+
 	return S_OK;
 }
 
@@ -89,7 +83,6 @@ HRESULT CSprite::InitializeTGAinMemory(unsigned int *pSource, unsigned long m_ul
 	D3DXCreateSprite(g_pDevice, &m_pSprite);
 
 	m_bInitialized = TRUE;
-	m_bVisible = true;
 
 	return S_OK;
 }

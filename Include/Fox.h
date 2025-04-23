@@ -24,7 +24,7 @@
 #include "FOX_error.h"		// obsluga bledow
 #include "FOX_rwops.h"		// operacje zapisu i odczytu na strumieniach
 #include "FOX_timer.h"		// obsluga zegara + directX
-#include "FOX_audio.h"		// obsluga dzwieku + directX
+#include "audio.h"			// obsluga dzwieku + directX
 #include "FOX_cdrom.h"		// obsluga dzwieku jako sciezki CD
 #include "FOX_joystick.h"	// obsluga joysticka
 #include "FOX_events.h"		// obsluga zdarzen + directX

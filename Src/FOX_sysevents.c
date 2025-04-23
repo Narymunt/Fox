@@ -1,10 +1,7 @@
 // Fox v0.5 
 // by Jaroslaw Rozynski
 //===
-// *DIRECTX VIDEO*
-//===
 // TODO:
-// - usunac wszystkie rzeczy zwiazane z debugiem
 
 
 #include <stdlib.h>
@@ -54,8 +51,6 @@ void (*WIN_WinPAINT)(_THIS, HDC hdc);
 
 static BOOL (WINAPI *_TrackMouseEvent)(TRACKMOUSEEVENT *ptme) = NULL;
 
-// powrot 
-
 static VOID CALLBACK
 TrackMouseTimerProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
@@ -75,8 +70,6 @@ TrackMouseTimerProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 		PostMessage(hWnd, WM_MOUSELEAVE, 0, 0);
 	}
 }
-
-// zdarzenie myszy
 
 static BOOL WINAPI WIN_TrackMouseEvent(TRACKMOUSEEVENT *ptme)
 {
@@ -589,15 +582,29 @@ int FOX_RegisterApp(char *name, Uint32 style, void *hInst)
 	// zarejestruj klase aplikacji
 	
 	class.hCursor		= NULL;
+#ifdef _WIN32_WCE
+    {
+	/* WinCE uses the UNICODE version */
+	int nLen = strlen(name)+1;
+	LPWSTR lpszW = alloca(nLen*2);
+	MultiByteToWideChar(CP_ACP, 0, name, -1, lpszW, nLen);
+	class.hIcon		= LoadImage(hInst, lpszW, IMAGE_ICON,
+	                                    0, 0, LR_DEFAULTCOLOR);
+	class.lpszMenuName	= NULL;
+	class.lpszClassName	= lpszW;
+    }
+#else
 	class.hIcon		= LoadImage(hInst, name, IMAGE_ICON,
 	                                    0, 0, LR_DEFAULTCOLOR);
 	class.lpszMenuName	= "(none)";
 	class.lpszClassName	= name;
-
+#endif /* _WIN32_WCE */
 	class.hbrBackground	= NULL;
 	class.hInstance		= hInst;
 	class.style		= style;
-
+#ifdef HAVE_OPENGL
+	class.style		|= CS_OWNDC;
+#endif
 	class.lpfnWndProc	= WinMessage;
 	class.cbWndExtra	= 0;
 	class.cbClsExtra	= 0;

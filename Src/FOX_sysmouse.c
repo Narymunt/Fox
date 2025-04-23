@@ -1,10 +1,7 @@
 // Fox v0.5
 // by Jaroslaw Rozynski
 //===
-// *DIRECTX VIDEO*
-//===
 // TODO:
-// - usunac debugowe rzeczy
 
 #include <stdlib.h>
 #include <windows.h>
@@ -13,10 +10,11 @@
 #include "FOX_mouse.h"
 #include "FOX_sysmouse_c.h"
 #include "FOX_events_c.h"
-#include "FOX_cursor_c.h"
+#include "cursor_c.h"
 #include "FOX_lowvideo.h"
 
-// dla myszy
+#define USE_STATIC_CURSOR	// to tylko dla wce, w razie czego usunac
+
 
 HCURSOR	FOX_hcursor = NULL;		// export do FOX_eventloop.c
 
@@ -53,6 +51,7 @@ static void PrintBITMAP(FILE *out, char *bits, int w, int h)
 }
 #endif
 
+#ifndef USE_STATIC_CURSOR
 
 static void memnot(Uint8 *dst, Uint8 *src, int len)
 {
@@ -64,24 +63,36 @@ static void memxor(Uint8 *dst, Uint8 *src1, Uint8 *src2, int len)
 	while ( len-- > 0 )
 		*dst++ = (*src1++)^(*src2++);
 }
-
+#endif /* !USE_STATIC_CURSOR */
 
 void WIN_FreeWMCursor(_THIS, WMcursor *cursor)
 {
-
+#ifndef USE_STATIC_CURSOR
 	if ( cursor->curs != NULL )
 		DestroyCursor(cursor->curs);
 	if ( cursor->ands != NULL )
 		free(cursor->ands);
 	if ( cursor->xors != NULL )
 		free(cursor->xors);
-
+#endif /* !USE_STATIC_CURSOR */
 	free(cursor);
 }
 
 WMcursor *WIN_CreateWMCursor(_THIS,
 		Uint8 *data, Uint8 *mask, int w, int h, int hot_x, int hot_y)
 {
+#ifdef USE_STATIC_CURSOR
+	WMcursor *cursor;
+
+	// alokuj kursor
+	cursor = (WMcursor *)malloc(sizeof(*cursor));
+	
+	if ( cursor ) 
+	{
+		cursor->curs = LoadCursor(NULL, IDC_ARROW);
+	}
+	return(cursor);
+#else
 	WMcursor *cursor;
 	int allowed_x;
 	int allowed_y;
@@ -162,7 +173,7 @@ WMcursor *WIN_CreateWMCursor(_THIS,
 		return(NULL);
 	}
 	return(cursor);
-
+#endif /* USE_STATIC_CURSOR */
 }
 
 int WIN_ShowWMCursor(_THIS, WMcursor *cursor)
@@ -195,8 +206,6 @@ int WIN_ShowWMCursor(_THIS, WMcursor *cursor)
 	return(1);
 }
 
-// dla windows
-
 void WIN_WarpWMCursor(_THIS, Uint16 x, Uint16 y)
 {
 	POINT pt;
@@ -207,8 +216,7 @@ void WIN_WarpWMCursor(_THIS, Uint16 x, Uint16 y)
 		      this->screen->format->BytesPerPixel;
 		y += (this->screen->offset / this->screen->pitch);
 		FOX_PrivateMouseMotion(0, 0, x, y);
-	} 
-	else if ( mouse_relative) 
+	} else if ( mouse_relative) 
 	{
 		FOX_PrivateMouseMotion(0, 0, x, y);
 	} 

@@ -1,10 +1,15 @@
-// Fox v0.5a
+// Fox v0.7a!
 // by Jaroslaw Rozynski
-//===
+//================================================================================================
+// LAST UPDATE:
+// 18 march 2002
+//================================================================================================
+// CHANGES:
+//================================================================================================
 // TODO:
 // - obsluga innych formatow
 
-// obsluga microsoft wave (?) 
+// obsluga microsoft wave 
 
 #ifndef DISABLE_FILE	// tak na wszelki wypadek 
 
@@ -12,9 +17,10 @@
 #include <string.h>
 
 #include "FOX_error.h"
-#include "FOX_audio.h"
+#include "audio.h"
 #include "FOX_wave.h"
 #include "FOX_endian.h"
+
 
 // ile tego jest ? 
 

@@ -1,12 +1,18 @@
-// Fox v0.5
+// Fox v0.7
 // by Jaroslaw Rozynski
-//===
-// *DIRECTX*
-//===
+//================================================================================================
+// LAST UPDATE:
+// 18 march 2002
+//================================================================================================
+// CHANGES:
+// - zmienione naglowki dla directx
+//
+//================================================================================================
 // TODO:
+// - sprawdzenie zainstalowanej wersji directx
 
-#ifndef _directx_h_
-#define _directx_h_
+#ifndef _DIRECTX__H_
+#define _DIRECTX__H
 
 // naglowki dla directx
 
@@ -16,6 +22,7 @@
 #ifndef WIN32
 	#define WIN32
 #endif
+
 #undef  WINNT
 
 // dalekie wskazniki nie istnieja w 32
@@ -93,9 +100,9 @@
 
 // naglowki dla directx - fix ? 
 
-#define DIRECTDRAW_VERSION  0x0700
-#define DIRECTSOUND_VERSION 0x0500
-#define DIRECTINPUT_VERSION 0x0500
+#define DIRECTDRAW_VERSION  0x0800
+#define DIRECTSOUND_VERSION 0x0800
+#define DIRECTINPUT_VERSION 0x0700
 
 // tutaj naglowki dla directa
 

@@ -76,17 +76,17 @@ typedef struct AudioBootStrap {
 	FOX_AudioDevice *(*create)(int devindex);
 } AudioBootStrap;
 
-//#ifdef DMEDIA_SUPPORT
-//extern AudioBootStrap DMEDIA_bootstrap;
-//#endif
+#ifdef DMEDIA_SUPPORT
+extern AudioBootStrap DMEDIA_bootstrap;
+#endif
 
-//#ifdef ENABLE_DIRECTX
+#ifdef ENABLE_DIRECTX
 extern AudioBootStrap DSOUND_bootstrap;
-//#endif
+#endif
 
-//#ifdef ENABLE_WINDIB
-//extern AudioBootStrap WAVEOUT_bootstrap;
-//#endif
+#ifdef ENABLE_WINDIB
+extern AudioBootStrap WAVEOUT_bootstrap;
+#endif
 
 // to jest nasze aktualne urzadzenie audio 
 

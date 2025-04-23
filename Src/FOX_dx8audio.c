@@ -11,8 +11,8 @@
 #include "FOX_types.h"
 #include "FOX_error.h"
 #include "FOX_timer.h"
-#include "FOX_audio.h"
-#include "FOX_audio_c.h"
+#include "audio.h"
+#include "audio_c.h"
 #include "FOX_dx8audio.h"
 
 // usunac komentarz jezeli chcemy uzywac DirectX 6 DirectSoundNotify interface

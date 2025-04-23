@@ -22,19 +22,19 @@
 #include "FOX_syswm.h"
 #include "FOX_sysvideo.h"
 #include "FOX_RLEaccel_c.h"
-#include "FOX_blit.h"
+#include "blit.h"
 #include "FOX_pixels_c.h"
 #include "FOX_dx8video.h"
 #include "FOX_syswm_c.h"
 #include "FOX_sysmouse_c.h"
 #include "FOX_dx8events_c.h"
 #include "FOX_dx8yuv.h"
-//#include "FOX_wingl_c.h"
+#include "FOX_wingl_c.h"
 
 // funkcje do stworzenia trybu graficznego dostepnego przez opengl - wtedy uzywamy dib a nie directx
 
-//extern FOX_Surface *DIB_SetVideoMode(_THIS, FOX_Surface *current,
-//				int width, int height, int bpp, Uint32 flags);
+extern FOX_Surface *DIB_SetVideoMode(_THIS, FOX_Surface *current,
+				int width, int height, int bpp, Uint32 flags);
 
 // funkcje directx  i ich wskazniki na struktury video i ich zdarzenia
 
@@ -537,8 +537,8 @@ static FOX_VideoDevice *DX8_CreateDevice(int devindex)
 		memset(device, 0, (sizeof *device));
 		device->hidden = (struct FOX_PrivateVideoData *)
 				malloc((sizeof *device->hidden));
-//		device->gl_data = (struct FOX_PrivateGLData *)
-//				malloc((sizeof *device->gl_data));
+		device->gl_data = (struct FOX_PrivateGLData *)
+				malloc((sizeof *device->gl_data));
 	}
 	
 	if ( (device == NULL) || (device->hidden == NULL) ||
@@ -550,7 +550,7 @@ static FOX_VideoDevice *DX8_CreateDevice(int devindex)
 	}
 	
 	memset(device->hidden, 0, (sizeof *device->hidden));
-//	memset(device->gl_data, 0, (sizeof *device->gl_data));
+	memset(device->gl_data, 0, (sizeof *device->gl_data));
 
 	// ustaw wskazniki funkcji
 	

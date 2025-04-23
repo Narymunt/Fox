@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "FOX_audio.h"
+#include "audio.h"
 #include "FOX_mutex.h"
 #include "FOX_timer.h"
 #include "FOX_sysaudio.h"

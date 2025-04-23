@@ -4,6 +4,7 @@
 
 #include <windows.h>
 #include <math.h>
+#include "stdafx.h"
 #include "SinTable.h"
 
 //=== nasze pi ;)

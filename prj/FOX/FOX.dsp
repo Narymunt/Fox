@@ -43,7 +43,8 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /I "..\..\src" /I "..\..\src\audio" /I "..\..\src\video" /I "..\..\src\video\wincommon" /I "..\..\src\video\windx8" /I "..\..\src\events" /I "..\..\src\joystick" /I "..\..\src\cdrom" /I "..\..\src\thread" /I "..\..\src\thread\win32" /I "..\..\src\timer" /I "..\..\include" /I "..\..\include\FOX" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "ENABLE_WINDIB" /D "ENABLE_DIRECTX" /D _WIN32_WINNT=0x0400 /FR /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O2 /I "..\..\src" /I "..\..\src\audio" /I "..\..\src\video" /I "..\..\src\video\wincommon" /I "..\..\src\video\windx8" /I "..\..\src\events" /I "..\..\src\joystick" /I "..\..\src\cdrom" /I "..\..\src\thread" /I "..\..\src\thread\win32" /I "..\..\src\timer" /I "..\..\include" /I "..\..\include\FOX" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "ENABLE_WINDIB" /D "ENABLE_DIRECTX" /D _WIN32_WINNT=0x0400 /FR /FD /c
+# SUBTRACT CPP /YX
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
@@ -53,7 +54,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /machine:I386
-# ADD LINK32 winmm.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /map /debug /machine:I386
+# ADD LINK32 winmm.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /map /machine:I386
 
 !ELSEIF  "$(CFG)" == "FOX - Win32 Debug"
 
@@ -89,75 +90,103 @@ LINK32=link.exe
 # Name "FOX - Win32 Debug"
 # Begin Source File
 
+SOURCE=..\..\src\active.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\audio.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\audio_c.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\audiocvt.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\audiomem.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\audiomem.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\bcursor.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\blit.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\blit.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\cursor.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\cursor_c.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\dcursor.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\directx.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\FOX.c
+SOURCE=..\..\src\fox.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\FOX_active.c
+SOURCE=..\..\src\FOX_blit_0.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\FOX_audio.c
+SOURCE=..\..\src\FOX_blit_1.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Audio\FOX_audio_c.h
+SOURCE=..\..\src\FOX_blit_A.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\FOX_audiocvt.c
+SOURCE=..\..\src\FOX_blit_N.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\FOX_audiomem.c
+SOURCE=..\..\src\FOX_dibaudio.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Audio\FOX_audiomem.h
+SOURCE=..\..\src\FOX_dibaudio.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_blit.c
+SOURCE=..\..\src\FOX_dibevents.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_blit.h
+SOURCE=..\..\src\FOX_dibevents_c.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_blit_0.c
+SOURCE=..\..\src\FOX_dibvideo.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_blit_1.c
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\Src\Video\FOX_blit_A.c
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\Src\Video\FOX_blit_N.c
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\Src\Video\FOX_cursor.c
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\Src\Video\FOX_cursor_c.h
+SOURCE=..\..\src\FOX_dibvideo.h
 # End Source File
 # Begin Source File
 
 SOURCE=..\..\src\FOX_draw2d.c
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\FOX_draw2d.h
 # End Source File
 # Begin Source File
 
@@ -197,7 +226,7 @@ SOURCE=..\..\src\FOX_endian.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\FOX_error.c
+SOURCE=..\..\src\FOX_error.c
 # End Source File
 # Begin Source File
 
@@ -217,15 +246,27 @@ SOURCE=..\..\src\FOX_expose.c
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\FOX_fatal.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\FOX_fatal.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\FOX_filesys.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\include\FOX_filesys.h
+SOURCE=..\..\src\FOX_gamma.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_gamma.c
+SOURCE=..\..\src\FOX_getenv.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\FOX_glfuncs.h
 # End Source File
 # Begin Source File
 
@@ -233,11 +274,15 @@ SOURCE=..\..\src\FOX_keyboard.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_leaks.h
+SOURCE=..\..\src\FOX_leaks.h
 # End Source File
 # Begin Source File
 
 SOURCE=..\..\src\FOX_lowvideo.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\FOX_memops.h
 # End Source File
 # Begin Source File
 
@@ -249,11 +294,11 @@ SOURCE=..\..\src\FOX_mouse.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_pixels.c
+SOURCE=..\..\src\FOX_pixels.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_pixels_c.h
+SOURCE=..\..\src\FOX_pixels_c.h
 # End Source File
 # Begin Source File
 
@@ -265,11 +310,11 @@ SOURCE=..\..\src\FOX_resize.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_RLEaccel.c
+SOURCE=..\..\src\FOX_RLEaccel.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_RLEaccel_c.h
+SOURCE=..\..\src\FOX_RLEaccel_c.h
 # End Source File
 # Begin Source File
 
@@ -277,15 +322,15 @@ SOURCE=..\..\src\FOX_rwops.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_stretch.c
+SOURCE=..\..\src\FOX_stretch.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_stretch_c.h
+SOURCE=..\..\src\FOX_stretch_c.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_surface.c
+SOURCE=..\..\src\FOX_surface.c
 # End Source File
 # Begin Source File
 
@@ -297,11 +342,7 @@ SOURCE=..\..\src\FOX_sysevents.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Events\FOX_sysevents.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\src\joystick\FOX_sysjoystick.h
+SOURCE=..\..\src\FOX_sysevents.h
 # End Source File
 # Begin Source File
 
@@ -329,7 +370,7 @@ SOURCE=..\..\src\FOX_systhread.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Thread\Win32\FOX_systhread_c.h
+SOURCE=..\..\src\FOX_systhread_c.h
 # End Source File
 # Begin Source File
 
@@ -341,7 +382,7 @@ SOURCE=..\..\src\FOX_systimer.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_sysvideo.h
+SOURCE=..\..\src\FOX_sysvideo.h
 # End Source File
 # Begin Source File
 
@@ -369,11 +410,11 @@ SOURCE=..\..\src\FOX_timer_c.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\FOX_video.c
+SOURCE=..\..\src\FOX_video.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\Windib\FOX_vkeys.h
+SOURCE=..\..\src\FOX_vkeys.h
 # End Source File
 # Begin Source File
 
@@ -381,31 +422,39 @@ SOURCE=..\..\src\FOX_wave.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Audio\FOX_wave.h
+SOURCE=..\..\src\FOX_wave.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_yuv.c
+SOURCE=..\..\src\FOX_wingl.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_yuv_sw.c
+SOURCE=..\..\src\FOX_wingl_c.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_yuv_sw_c.h
+SOURCE=..\..\src\FOX_yuv.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\src\video\FOX_yuvfuncs.h
+SOURCE=..\..\src\FOX_yuv_mmx.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\Version.rc
+SOURCE=..\..\src\FOX_yuv_sw.c
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\Src\Video\wincommon\Wmmsg.h
+SOURCE=..\..\src\FOX_yuv_sw_c.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\FOX_yuvfuncs.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\src\wmmsg.h
 # End Source File
 # End Target
 # End Project

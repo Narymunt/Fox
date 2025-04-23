@@ -1,11 +1,7 @@
 // Fox v0.5
 // by Jaroslaw Rozynski
 //===
-// *VIDEO DIRECTX*
-//===
 // TODO:
-
-// pierdoly dla ikonek
 
 #include "FOX_lowvideo.h"
 

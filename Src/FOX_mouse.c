@@ -13,7 +13,7 @@
 
 #include "FOX_events.h"
 #include "FOX_events_c.h"
-#include "FOX_cursor_c.h"
+#include "cursor_c.h"
 #include "FOX_sysvideo.h"
 
 // statyczne, wypelniane przez handlery

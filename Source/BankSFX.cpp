@@ -3,84 +3,52 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "BankSFX.h"
-#include "FileSystem.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
 //=== stworzenie obiektu i wyzerowanie wskaznikow ===
-//=== bank sfx moze byc w innym pliku a wave w innym ===
 
-CBankSFX::CBankSFX(char cBankArchiveName[], char cBankFilename[])
+CBankSFX::CBankSFX()
 {
-	m_pEventsSFX = NULL;
+	m_pNazwaPliku = NULL;
+	m_pOpis = NULL;
 	
-	// wyczysc nazwy
-
-	m_pBankSFXFileSystem = NULL;
-	m_pEventSFXFileSystem = NULL;
-
-	// teraz otworz
-
-	m_pBankSFXFileSystem = new CFileSystem(cBankArchiveName);	// bank sfx
-//	m_pEve
-
-
-
-//m_pFile = new CFileSystem("Resource\\klocki.fox");
-	
-
-
 }
 
 //=== usuniecie obiektu i wyzerowanie wskaznikow ===
 
 CBankSFX::~CBankSFX()
 {
-
-	// tutaj czyscimy zdarzenia
-
-	for (unsigned int uiLicznik=0; uiLicznik < m_uiEventCount; uiLicznik++)
+	if (m_pNazwaPliku!=NULL)
 	{
-		if (m_pEventsSFX[uiLicznik] != NULL )
-		{
-			delete m_pEventsSFX[uiLicznik];
-			m_pEventsSFX[uiLicznik] = NULL;
-		}
+		free(m_pNazwaPliku);
+		m_pNazwaPliku = NULL;
 	}
 
-	// a tutaj wskaznik na wskazniki
-
-	if (m_pEventsSFX != NULL)
+	if (m_pOpis!=NULL)
 	{
-		delete m_pEventsSFX;
-		m_pEventsSFX = NULL;
+		free(m_pOpis);
+		m_pNazwaPliku = NULL;
 	}
 
-}	
+}
 
 //=== deinizjalizacja ===
 
-void CBankSFX::DeInitializeALL(void)
+void CBankSFX::DeInitialize(void)
 {
-	// tutaj czyscimy zdarzenia
-
-	for (unsigned int uiLicznik=0; uiLicznik < m_uiEventCount; uiLicznik++)
+	if (m_pNazwaPliku!=NULL)
 	{
-		if (m_pEventsSFX[uiLicznik] != NULL )
-		{
-			delete m_pEventsSFX[uiLicznik];
-			m_pEventsSFX[uiLicznik] = NULL;
-		}
+		free(m_pNazwaPliku);
+		m_pNazwaPliku = NULL;
 	}
 
-	// a tutaj wskaznik na wskazniki
-
-	if (m_pEventsSFX != NULL)
+	if (m_pOpis!=NULL)
 	{
-		delete m_pEventsSFX;
-		m_pEventsSFX = NULL;
+		free(m_pOpis);
+		m_pNazwaPliku = NULL;
 	}
 }
 
@@ -98,5 +66,52 @@ unsigned char CBankSFX::GetVersion(void)
 	return m_ucVersion;
 }
 
+//=== czy wave w zdarzeniu maja byc losowane ? ===
+//=== index oznacza tak naprawde numer zdarzenia dzwiekowego
+
+void CBankSFX::SetLosowanie(unsigned int uiEventIndex, unsigned char ucValue)
+{
+	m_pLosowanie[uiEventIndex] = ucValue;
+}
+
+//=== zwroc flage czy wave ma byc losowany ===
+//=== index oznacza tak naprawde numer zdarzenia dzwiekowego
+
+unsigned char CBankSFX::GetLosowanie(unsigned int uiEventIndex)
+{
+	return m_pLosowanie[uiEventIndex];
+}
+
+//=== ustaw flage czy te wave w tym zdarzeniu (index) maja byc odtwarzane po kolei
+//=== index oznacza numer zdarzenia dzwiekowego
+
+void CBankSFX::SetPoKolei(unsigned int uiEventIndex, unsigned char ucValue)
+{
+	m_pPoKolei[uiEventIndex] = ucValue;
+}
+
+//=== zwroc flage czy wave maja byc odtwarzane po kolei
+//=== index oznacza numer zdarzenia dzwiekowego
+
+unsigned char CBankSFX::GetPoKolei(unsigned int uiEventIndex)
+{
+	return m_pPoKolei[uiEventIndex];
+}
+
+//=== ustaw liczbe wave, ktore znajduja sie w tym zdarzeniu
+//=== index oznacza numer zdarzenia dla ktorego ustawiamy
+
+void CBankSFX::SetWaveCount(unsigned int uiEventIndex, unsigned int uiValue)
+{
+	m_pLiczbaWave[uiEventIndex] = uiValue;
+}
+
+//=== zwroc liczbe wave w tym zdarzeniu
+//=== index oznacza numer zdarzenia dla ktorego ustawiamy
+
+unsigned int CBankSFX::GetWaveCount(unsigned int uiEventIndex)
+{
+	return m_pLiczbaWave[uiEventIndex];
+}
 
 //= end =

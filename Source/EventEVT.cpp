@@ -191,8 +191,6 @@ CEventEVT::~CEventEVT()
 void CEventEVT::Put(unsigned int m_uiNrKlatki, unsigned int m_uiNrEventu)
 {
 	// jezeli klatka nie miesci sie w przedziale eventu, to wyswietl ostatnia
-	// ale nie powtarzaj zdarzenia dzwiekowego
-
 	if (m_uiNrKlatki>=pEvent[m_uiNrEventu]->GetLiczbaKlatek())
 	{
 		m_uiNrKlatki=pEvent[m_uiNrEventu]->GetLiczbaKlatek()-1;

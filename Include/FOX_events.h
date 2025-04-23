@@ -1,17 +1,24 @@
-// Fox v0.5 
+// Fox v0.7a
 // by Jaroslaw Rozynski
-//===
+//================================================================================================
+// LAST UPDATE:
+// 18 march 2002
+//================================================================================================
+// CHANGES:
+// - fox_active => active
+//================================================================================================
 // TODO:
+// - FOX>>fx
 // - zapis zdarzen do pliku (logowanie)
 
 
 // wylapywanie zdarzen
 
-#ifndef _FOX_events_h
-#define _FOX_events_h
+#ifndef _FOX_EVENTS__H_
+#define _FOX_EVENTS__H_
 
 #include "FOX_types.h"
-#include "FOX_active.h"
+#include "active.h"			// zmiana stanu aplikacji
 #include "FOX_keyboard.h"
 #include "FOX_mouse.h"
 #include "FOX_joystick.h"

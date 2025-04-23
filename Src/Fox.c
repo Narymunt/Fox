@@ -1,22 +1,32 @@
-// Fox v0.5
+// Fox v0.7
 // by Jaroslaw Rozynski
-//===
+//================================================================================================
+// LAST UPDATE:
+// 18 march 2002
+//================================================================================================
+// CHANGES:
+// - nie mozna uruchomic biblioteki bez obslugi video
+// - zawsze musi byc flaga wlaczenie video i audio
+// - usuniete sprawdzenie blokady przy deinicjalizowaniu audio i video
+//================================================================================================
 // TODO:
-
+// - czy potrzebne endian ? zapis jest jako 4321
+// - po co FOX_leaks.h ? 
+// - check_leaks jest zawsze
+// - timer zawsze wlaczony, wiec usunac flagi dla disable timers
+// - audio zawsze wlaczone, wiec usunac flagi dla disable audio (zamiast tego stosowac stop^play)
+// - przy zamykaniu systemu informacje o surface do dziennika, a nie na ekran
+// - przy wywolaniu biblioteki - reason_for_call do dziennika
 
 // inicjalizacja biblioteki
 
 #include <stdlib.h>		// dla gettenv, w razie czego usunac
+#include <windows.h>
 
 #include "FOX.h"			// glowny
 #include "FOX_endian.h"		// 1234 czy 3412
 #include "FOX_fatal.h"		// krytyczne bledy 
-
-// testowac z i bez, ale bez sensu jest bez video
-
-#ifndef DISABLE_VIDEO
-#include "FOX_leaks.h"
-#endif
+#include "FOX_leaks.h"		// dodatki 
 
 // inicjalizacja i czyszczenie routinek 
 
@@ -37,47 +47,26 @@ static Uint32 ticks_started = 0;
 
 int FOX_InitSubSystem(Uint32 flags)
 {
-
-#ifndef DISABLE_VIDEO
 	
 	// init video i zdarzen	
 	
 	if ( (flags & FOX_INIT_VIDEO) && !(FOX_initialized & FOX_INIT_VIDEO) ) 
 	{
-		if ( FOX_VideoInit(getenv("FOX_VIDEODRIVER"),
-		                   (flags&FOX_INIT_EVENTTHREAD)) < 0 ) 
-		{
+		if ( FOX_VideoInit(getenv("FOX_VIDEODRIVER"),(flags&FOX_INIT_EVENTTHREAD)) < 0 ) 
 			return(-1);
-		}
+		
 		FOX_initialized |= FOX_INIT_VIDEO;
 	}
-#else
-	if ( flags & FOX_INIT_VIDEO ) 
-	{
-		FOX_SetError("[FOX]: brak obslugi video");
-		return(-1);
-	}
-#endif
-
-#ifndef DISABLE_AUDIO
 
 	// init audio
 	
 	if ( (flags & FOX_INIT_AUDIO) && !(FOX_initialized & FOX_INIT_AUDIO) ) 
 	{
 		if ( FOX_AudioInit(getenv("FOX_AUDIODRIVER")) < 0 ) 
-		{
 			return(-1);
-		}
+		
 		FOX_initialized |= FOX_INIT_AUDIO;
 	}
-#else
-	if ( flags & FOX_INIT_AUDIO ) 
-	{
-		FOX_SetError("[FOX]: brak obslugi video");
-		return(-1);
-	}
-#endif
 
 #ifndef DISABLE_TIMERS
 
@@ -117,10 +106,7 @@ int FOX_Init(Uint32 flags)
 
 	// zainicjalizj podsystemy, joystick, sound itd.
 
-	if ( FOX_InitSubSystem(flags) < 0 ) 
-	{
-		return(-1);
-	}
+	if ( FOX_InitSubSystem(flags) < 0 ) return(-1);
 
 	return(0);
 }
@@ -140,31 +126,30 @@ void FOX_QuitSubSystem(Uint32 flags)
 	}
 #endif
 
-#ifndef DISABLE_AUDIO
+	// deinicjalizacja audio
+
 	if ( (flags & FOX_initialized & FOX_INIT_AUDIO) ) 
 	{
 		FOX_AudioQuit();
 		FOX_initialized &= ~FOX_INIT_AUDIO;
 	}
-#endif
 
-#ifndef DISABLE_VIDEO
+	// deinicjalizacja video
+
 	if ( (flags & FOX_initialized & FOX_INIT_VIDEO) ) 
 	{
 		FOX_VideoQuit();
 		FOX_initialized &= ~FOX_INIT_VIDEO;
 	}
-#endif
+
 }
 
 // sprawdz co bylo zainicjalizowane
 
 Uint32 FOX_WasInit(Uint32 flags)
 {
-	if ( ! flags ) 
-	{
-		flags = FOX_INIT_EVERYTHING;
-	}
+	if ( ! flags ) flags = FOX_INIT_EVERYTHING;
+	
 	return (FOX_initialized&flags);
 }
 
@@ -190,10 +175,7 @@ void FOX_Quit(void)
 
 // powinno dzialac
 
-#include <windows.h>
-
-BOOL APIENTRY DllMain( HANDLE hModule, 
-                       DWORD  ul_reason_for_call, 
+BOOL APIENTRY DllMain( HANDLE hModule, DWORD  ul_reason_for_call, 
                        LPVOID lpReserved )
 {
 	switch (ul_reason_for_call) 

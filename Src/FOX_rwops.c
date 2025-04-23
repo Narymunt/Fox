@@ -1,9 +1,17 @@
-// Fox v0.5
+// Fox v0.7.0
 // by Jaroslaw Rozynski
 //===
 // *FILE*
 //===
 // TODO:
+// - memread&write niepotrzebne ? 
+// - memseek, potrzebne ? 
+// - memclose, potrzebne ? 
+// - wszystkie seterror - podzial na konsole i plik
+// - FOX_RWops *FOX_RWFromFile(const char *file, const char *mode)
+//	 bledy do konsoli i pliku
+// - FOX_RWops *FOX_RWFromMem(void *mem, int size), potrzebne ? 
+// - na konsole caly logger
 
 // odczyt i zapis 
 
@@ -20,15 +28,15 @@ static int stdio_seek(FOX_RWops *context, int offset, int whence)
 {
 
 	if ( fseek(context->hidden.stdio.fp, offset, whence) == 0 ) 
-	{
 		return(ftell(context->hidden.stdio.fp));
-	} 
 	else 
 	{
 		FOX_Error(FOX_EFSEEK);
 		return(-1);
 	}
 }
+
+// odczyt przez fread
 
 static int stdio_read(FOX_RWops *context, void *ptr, int size, int maxnum)
 {
@@ -37,11 +45,12 @@ static int stdio_read(FOX_RWops *context, void *ptr, int size, int maxnum)
 	nread = fread(ptr, size, maxnum, context->hidden.stdio.fp); 
 
 	if ( nread == 0 && ferror(context->hidden.stdio.fp) ) 
-	{
 		FOX_Error(FOX_EFREAD);
-	}
+	
 	return(nread);
 }
+
+// zapis przez fwrite
 
 static int stdio_write(FOX_RWops *context, const void *ptr, int size, int num)
 {
@@ -56,15 +65,15 @@ static int stdio_write(FOX_RWops *context, const void *ptr, int size, int num)
 	return(nwrote);
 }
 
+// zamknij 
+
 static int stdio_close(FOX_RWops *context)
 {
 	if ( context ) 
 	{
-		if ( context->hidden.stdio.autoclose ) 
-		{
-			// !!! sprawdzamy wartosc !!!
-			fclose(context->hidden.stdio.fp);
-		}
+		// !!! sprawdzamy wartosc !!!
+		if ( context->hidden.stdio.autoclose ) fclose(context->hidden.stdio.fp);			
+		
 		free(context);
 	}
 	return(0);
@@ -93,19 +102,17 @@ static int mem_seek(FOX_RWops *context, int offset, int whence)
 	}
 	
 	if ( newpos < context->hidden.mem.base ) 
-	{
 		newpos = context->hidden.mem.base;
-	}
 	
 	if ( newpos > context->hidden.mem.stop ) 
-	{
 		newpos = context->hidden.mem.stop;
-	}
 	
 	context->hidden.mem.here = newpos;
 	
 	return(context->hidden.mem.here-context->hidden.mem.base);
 }
+
+// tak samo tylko, ze na pamieci 
 
 static int mem_read(FOX_RWops *context, void *ptr, int size, int maxnum)
 {
@@ -114,34 +121,31 @@ static int mem_read(FOX_RWops *context, void *ptr, int size, int maxnum)
 	num = maxnum;
 	
 	if ( (context->hidden.mem.here + (num*size)) > context->hidden.mem.stop ) 
-	{
 		num = (context->hidden.mem.stop-context->hidden.mem.here)/size;
-	}
 	
 	memcpy(ptr, context->hidden.mem.here, num*size);
 	context->hidden.mem.here += num*size;
 	return(num);
 }
 
+// tutaj zapis
+
 static int mem_write(FOX_RWops *context, const void *ptr, int size, int num)
 {
 
 	if ( (context->hidden.mem.here + (num*size)) > context->hidden.mem.stop ) 
-	{
 		num = (context->hidden.mem.stop-context->hidden.mem.here)/size;
-	}
 	
 	memcpy(context->hidden.mem.here, ptr, num*size);
 	context->hidden.mem.here += num*size;
 	return(num);
 }
 
+// zwolnij pamiec
+
 static int mem_close(FOX_RWops *context)
 {
-	if ( context ) 
-	{
-		free(context);
-	}
+	if ( context ) free(context);
 	return(0);
 }
 
@@ -158,27 +162,19 @@ FOX_RWops *FOX_RWFromFile(const char *file, const char *mode)
 
 	rwops = NULL;
 
-	// to usunac, bo dodane, z powodu warning
-	fp=NULL;
+	// tutaj otwieramy plik 
 
-// bylo if (fp==NULL)
-
-	if ( file == NULL ) 
-	{
-		FOX_SetError("[FOX]: nie mozna otworzyc pliku %s", file);
-	} 
+	if ( (fp=fopen(file,mode)) == NULL ) FOX_SetError("[FOX]: nie mozna otworzyc pliku %s", file);
 	else 
 	{
 		in_FOX = 1;
-		
 		rwops = FOX_RWFromFP(fp, 1);
-
 		in_FOX = 0;
 	}
 	return(rwops);
 }
 
-// na pliku 
+// na pliku, odczyt  
 
 FOX_RWops *FOX_RWFromFP(FILE *fp, int autoclose)
 {
@@ -189,7 +185,7 @@ FOX_RWops *FOX_RWFromFP(FILE *fp, int autoclose)
 		/*return(NULL);*/
 	}
 
-	rwops = FOX_AllocRW();
+	rwops = FOX_AllocRW();	// tutaj skok 
 
 	if ( rwops != NULL ) 
 	{
@@ -232,10 +228,8 @@ FOX_RWops *FOX_AllocRW(void)
 
 	area = (FOX_RWops *)malloc(sizeof *area);
 	
-	if ( area == NULL ) 
-	{
-		FOX_OutOfMemory();
-	}
+	if ( area == NULL ) FOX_OutOfMemory();	// tutaj zamienic na logger i konsole
+	
 	return(area);
 }
 
